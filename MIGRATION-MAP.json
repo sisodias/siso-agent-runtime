@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "source_system": "SISO Agent Base warehouse",
+  "target_repository": "siso-agent-runtime",
+  "strategy": "clean-room public extraction of stable boundaries; no history or machine state copied",
+  "units": [
+    {
+      "source": ["bin/siso", "package.json", "installer"],
+      "target": ["bin/siso-agent-runtime", "src/config.mjs", "src/host.mjs"],
+      "decision": "reimplemented",
+      "reason": "retain the provider-neutral launcher and explicit configuration without warehouse installation assumptions"
+    },
+    {
+      "source": ["extensions/siso-agent-router"],
+      "target": ["packages/control-core"],
+      "decision": "partial-reimplementation",
+      "reason": "publish task state and ordered-event primitives now; Pi-specific routing, fleet coordination, worktrees, reviews, and mailbox parity remain pending"
+    },
+    {
+      "source": ["extensions/siso-lifecycle"],
+      "target": ["packages/session-lifecycle"],
+      "decision": "reimplemented-boundary",
+      "reason": "versioned explicit checkpoints without transcript discovery, provider hooks, or personal lesson state"
+    },
+    {
+      "source": ["extensions/siso-context-manager"],
+      "target": ["packages/context-manager"],
+      "decision": "reimplemented-boundary",
+      "reason": "deterministic local budgeting; model distillation and private memory integrations remain outside the core"
+    },
+    {
+      "source": ["extensions/siso-status"],
+      "target": ["packages/status-surface"],
+      "decision": "reimplemented-boundary",
+      "reason": "stable status object without machine-specific telemetry or notification plumbing"
+    },
+    {
+      "source": ["packages/siso-tui/src/contract/events.ts", "packages/siso-tui/src/runtime/session-runtime.ts", "apps/siso-tui"],
+      "target": ["packages/tui-contracts"],
+      "decision": "contract-extracted-application-deferred",
+      "reason": "publish normalized events now; the raw terminal app and provider host adapter require a later audited release"
+    },
+    {
+      "source": ["brain/profile composition"],
+      "target": ["packages/profile-composer", "profiles/core.md"],
+      "decision": "reimplemented-boundary",
+      "reason": "explicit bounded composition replaces implicit personal profile discovery"
+    },
+    {
+      "source": ["skills", "playbooks", "agent-zero", "brain shared intelligence", "integrations", "session intelligence", "foundry", "evidence engines"],
+      "target": ["separate Great Library Works and repositories"],
+      "decision": "reclassified",
+      "reason": "these are peer capabilities or research systems, not Runtime internals"
+    },
+    {
+      "source": ["private topology", "credentials", "provider state", "personal profiles", "session transcripts", "generated state"],
+      "target": [],
+      "decision": "excluded",
+      "reason": "not public source material"
+    }
+  ],
+  "source_mutation": "none",
+  "parity_claim": "experimental foundation; not full SISO Agent Base feature parity"
+}

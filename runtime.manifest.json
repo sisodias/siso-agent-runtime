@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": 1,
+  "runtime": {
+    "id": "siso-agent-runtime",
+    "name": "SISO Agent Runtime",
+    "version": "0.1.0",
+    "stability": "experimental",
+    "provider_neutral": true
+  },
+  "application": {
+    "cli": "bin/siso-agent-runtime",
+    "configuration": "explicit-json-file",
+    "host_launch": "argv-without-shell"
+  },
+  "modules": [
+    {"id": "control-core", "responsibility": "task state and ordered runtime events"},
+    {"id": "session-lifecycle", "responsibility": "versioned checkpoints and restoration"},
+    {"id": "context-manager", "responsibility": "deterministic context budgeting"},
+    {"id": "status-surface", "responsibility": "stable machine-readable runtime status"},
+    {"id": "tui-contracts", "responsibility": "normalized runtime and UI events"},
+    {"id": "profile-composer", "responsibility": "explicit bounded profile composition"}
+  ],
+  "excluded_domains": [
+    "skills",
+    "playbooks",
+    "agent-zero",
+    "shared-intelligence",
+    "integrations",
+    "research-engines",
+    "provider-credentials",
+    "private-topology",
+    "personal-agent-state"
+  ]
+}

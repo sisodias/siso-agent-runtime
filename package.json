@@ -1,0 +1,19 @@
+{
+  "name": "siso-agent-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Provider-neutral coding-agent runtime shell and internal contracts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "siso-agent-runtime": "bin/siso-agent-runtime"
+  },
+  "scripts": {
+    "test": "node --test test/runtime.test.mjs && node scripts/verify-runtime.mjs && node scripts/publication-safety.mjs",
+    "verify": "node scripts/verify-runtime.mjs",
+    "publication-check": "node scripts/publication-safety.mjs"
+  }
+}

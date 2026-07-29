@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SISO Agent Runtime — Architecture</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080b12;--panel:#111724;--ink:#edf3ff;--muted:#a5b0c4;--line:#263249;--accent:#72e6bd;--warn:#ffd479}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0,#17243b 0,transparent 35%),var(--bg);color:var(--ink);font:16px/1.65 ui-sans-serif,system-ui,sans-serif}main{max-width:1080px;margin:auto;padding:64px 24px}h1{font-size:clamp(2.4rem,7vw,5.4rem);line-height:.95;letter-spacing:-.055em;margin:0 0 24px}h2{margin-top:52px;font-size:1.5rem}p{max-width:78ch;color:var(--muted)}.eyebrow,.tag{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.card{background:linear-gradient(145deg,#141c2c,#0d121d);border:1px solid var(--line);border-radius:18px;padding:22px}.card h3{margin:.2rem 0 .5rem}.card p{margin:0}.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:28px 0}.node{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:10px 16px}.arrow{color:var(--accent)}.decision{border-left:3px solid var(--warn);padding:10px 18px;background:#171711;color:#ded8bc}code{color:#bfe9ff}footer{border-top:1px solid var(--line);margin-top:64px;padding-top:24px;color:var(--muted)}
+  </style>
+</head>
+<body><main>
+  <div class="eyebrow">Great Library of SISO · Agents · Runtime</div>
+  <h1>A small public boundary for a large agent system.</h1>
+  <p>The warehouse grew as an application, laboratory, profile store, orchestrator, and integration surface at once. This extraction does not preserve that accidental shape. It preserves six runtime responsibilities behind an explicit launcher and leaves peer capabilities in their own Works.</p>
+
+  <div class="flow" aria-label="Runtime flow">
+    <span class="node">JSON config</span><span class="arrow">→</span>
+    <span class="node">profile composer</span><span class="arrow">→</span>
+    <span class="node">argv launcher</span><span class="arrow">→</span>
+    <span class="node">coding-agent host</span><span class="arrow">→</span>
+    <span class="node">events + checkpoints</span>
+  </div>
+
+  <h2>The internal contracts</h2>
+  <div class="grid">
+    <section class="card"><span class="tag">Control</span><h3>Control Core</h3><p>Owns task state transitions and monotonically ordered runtime events.</p></section>
+    <section class="card"><span class="tag">Continuity</span><h3>Session Lifecycle</h3><p>Writes and restores explicit, versioned checkpoints. It never discovers transcripts.</p></section>
+    <section class="card"><span class="tag">Attention</span><h3>Context Manager</h3><p>Applies a deterministic character budget while preserving complete recent messages.</p></section>
+    <section class="card"><span class="tag">Observability</span><h3>Status Surface</h3><p>Projects runtime state into a stable object for humans, UIs, CLIs, or a future MCP server.</p></section>
+    <section class="card"><span class="tag">Interface</span><h3>TUI Contracts</h3><p>Normalizes a deliberately small set of versioned runtime and tool events.</p></section>
+    <section class="card"><span class="tag">Identity</span><h3>Profile Composer</h3><p>Combines only named files, enforces a byte ceiling, and performs no laptop-wide discovery.</p></section>
+  </div>
+
+  <h2>Why one repository?</h2>
+  <p>These packages currently change as one adoption unit and share a single runtime contract. Splitting them today would create release coordination without independent value. The boundaries remain visible so any module can become its own Work later when external adoption, independent ownership, or release cadence supplies evidence for the split.</p>
+
+  <h2>What deliberately lives elsewhere</h2>
+  <p>Skills and Playbooks are capabilities consumed by agents. Agent Zero is orchestration. Agent Brain and Session Intelligence are shared intelligence. Integrations connect external surfaces. Foundry and Evidence Engines are research systems. None is a child of Runtime merely because the old application happened to contain it.</p>
+
+  <div class="decision"><strong>Honest release boundary:</strong> version 0.1.0 proves the public architecture and executable contracts. The warehouse's Pi-specific routing, fleet coordination, raw terminal application, and provider adapters are audited migration work—not features this release pretends to have.</div>
+
+  <h2>Change without amnesia</h2>
+  <p><code>MIGRATION-MAP.json</code> records each extraction decision and its reason. <code>runtime.manifest.json</code> exposes the current machine contract. The Great Library assigns stable Work identity independently of this repository, so a future implementation can replace the artifact without rewriting the history of the idea.</p>
+
+  <footer>The Great Library of SISO — Built by the SISO Open Source Foundation · Funded by SISO Agency.</footer>
+</main></body></html>

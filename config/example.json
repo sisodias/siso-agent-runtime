@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "host": {
+    "command": ["codex"],
+    "cwd": "..",
+    "env": {}
+  },
+  "profile": {
+    "files": ["../profiles/core.md"],
+    "maxBytes": 65536
+  },
+  "session": {
+    "checkpointDirectory": "../.runtime/checkpoints"
+  },
+  "context": {
+    "maxChars": 16000
+  }
+}
