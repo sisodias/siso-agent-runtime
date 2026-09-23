@@ -1,5 +1,7 @@
 # Agent instructions
 
+**In one line:** Provider-neutral shell for running a coding-agent host: configuration, composed profiles, context budgeting, checkpoints and machine-readable status events. District: `SISO_Agents` (`~/SISO_Workspace/SISO_Agents/siso-agent-runtime`).
+
 This repository is the public, provider-neutral SISO Agent Runtime.
 
 - Keep the CLI and `runtime.manifest.json` backward-readable.
